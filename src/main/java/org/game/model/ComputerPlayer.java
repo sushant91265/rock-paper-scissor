@@ -32,6 +32,6 @@ public class ComputerPlayer implements Player {
     @Override
     public void generateMove(List<String> possibleMoves) {
         int randomIndex = (int) (Math.random() * possibleMoves.size());
-        setMove(possibleMoves.get(randomIndex));
+        this.setMove(possibleMoves.get(randomIndex));
     }
 }

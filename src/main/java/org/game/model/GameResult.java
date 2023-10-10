@@ -19,4 +19,8 @@ public class GameResult {
     public String toString() {
         return player1.getName() + " vs. " + player2.getName() + ": " + result;
     }
+
+    public boolean isWinner(Player player) {
+        return result.contains(player.getName());
+    }
 }

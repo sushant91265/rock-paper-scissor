@@ -7,7 +7,12 @@ import org.game.rules.GameRules;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameEngine {
+/**
+ * The GameEngine class is responsible for playing the game.
+ * It takes a list of players and a set of rules and plays the game.
+ * It returns a list of GameResult objects, one for each round played.
+ */
+class GameEngine {
     private final GameRules rules;
     private final List<Player> players;
 
@@ -19,32 +24,30 @@ public class GameEngine {
     public List<GameResult> play() {
         List<GameResult> results = new ArrayList<>();
 
-        for (int i = 0; i < players.size(); i++) {
-            for (int j = i + 1; j < players.size(); j++) {
-                Player player1 = players.get(i);
-                Player player2 = players.get(j);
+        Player player1 = players.get(0);
+        Player player2 = players.get(1);
 
-                player1.generateMove(rules.getValidMoves());
-
-                if (player2.isComputer()) {
-                    player2.generateMove(rules.getValidMoves());
-                }
-
-                String move1 = player1.getMove();
-                String move2 = player2.getMove();
-                System.out.println(player1.getName() + " plays " + move1 + " against " + player2.getName() + " who plays " + move2);
-                String result;
-                if (rules.isWinningMove(move1, move2)) {
-                    result = player1.getName() + " wins against " + player2.getName() + "!";
-                } else if (rules.isWinningMove(move2, move1)) {
-                    result = player2.getName() + " wins against " + player1.getName() + "!";
-                } else {
-                    result = "It's a tie between " + player1.getName() + " and " + player2.getName() + "!";
-                }
-
-                results.add(new GameResult(player1, player2, result));
-            }
-        }
+        GameResult result = playRound(player1, player2);
+        results.add(result);
         return results;
+    }
+
+    private GameResult playRound(Player player1, Player player2) {
+        String move1 = player1.getMove();
+        String move2 = player2.getMove();
+
+        String roundResult = determineRoundResult(player1, player2, move1, move2);
+
+        return new GameResult(player1, player2, roundResult);
+    }
+
+    private String determineRoundResult(Player player1, Player player2, String move1, String move2) {
+        if (rules.isWinningMove(move1, move2)) {
+            return player1.getName() + " wins against " + player2.getName() + "!";
+        } else if (rules.isWinningMove(move2, move1)) {
+            return player2.getName() + " wins against " + player1.getName() + "!";
+        } else {
+            return "It's a tie between " + player1.getName() + " and " + player2.getName() + "!";
+        }
     }
 }

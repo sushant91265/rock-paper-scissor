@@ -1,87 +1,45 @@
 package org.game;
 
-import org.game.core.GameEngine;
+import org.game.core.GameSession;
 import org.game.model.*;
 import org.game.rules.GameRules;
+import org.game.util.ConfigurationReader;
 import org.game.util.GameRulesFactory;
+import org.game.util.PlayerUtility;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.List;
-import java.util.Properties;
 import java.util.Scanner;
-import java.util.ArrayList;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Main {
+
+    private static final Logger log = LoggerFactory.getLogger(Main.class);
+
     public static void main(String[] args) {
-        Properties configProperties = new Properties();
-        try(FileInputStream configFis = new FileInputStream("src/main/resources/game_config.properties")) {
-            configProperties.load(configFis);
-        } catch (IOException e) {
-            System.out.println("Error loading config file. Exiting...");
-            return;
-        }
+        log.info("Welcome to Rock-Paper-Scissors!");
 
-        int numRounds = Integer.parseInt(configProperties.getProperty("num_rounds"));
+        GameRules rules = GameRulesFactory.createGameRules(ConfigurationReader.loadGameProperties());
+        List<Player> players = PlayerUtility.createPlayers();
 
-        GameRules rules = GameRulesFactory.createGameRules(loadGameProperties());
+        try (Scanner scanner = new Scanner(System.in)) {
+            log.info("Enter the number of rounds to play: ");
 
-        List<Player> players = createPlayers();
-        Scanner scanner = new Scanner(System.in);
-        for (int round = 1; round <= numRounds; round++) {
-            System.out.println("Round " + round + ":");
+            int numRounds = scanner.nextInt();
+            scanner.nextLine();
 
-            for (Player player : players) {
-                if (player.isComputer()) {
-                    player.generateMove(rules.getValidMoves());
-                } else {
-                    while (true) {
-                        System.out.print(player.getName() + ", enter your choice: ");
-                        String choice = scanner.nextLine().trim().toLowerCase();
+            for (int round = 1; round <= numRounds; round++) {
+                log.info("Round {}:", round);
+                GameSession gameSession = new GameSession();
+                List<GameResult> results = gameSession.playRound(rules, players, scanner);
 
-                        if (isValidInput(choice, rules)) {
-                            player.setMove(choice);
-                            break;
-                        } else {
-                            System.out.println("Invalid input. Please enter a valid choice.");
-                        }
-                    }
-                }
+                results.forEach(result -> log.info(result.toString()));
             }
-
-            // Calculate and display results
-            GameEngine game = new GameEngine(rules, players);
-            List<GameResult> results = game.play();
-
-            results.forEach(System.out::println);
+        } catch (InputMismatchException e) {
+            log.error("An error occurred while playing the game! Please provide correct input.");
+            log.debug("Exception: ", e);
         }
-        scanner.close();
-    }
-
-    private static Properties loadGameProperties() {
-        Properties properties = new Properties();
-        try (FileInputStream fis = new FileInputStream("src/main/resources/game.properties")) {
-            properties.load(fis);
-        } catch (IOException e) {
-            System.out.println("Error loading game properties. Exiting...");
-            System.exit(1);
-        }
-        return properties;
-    }
-
-    private static List<Player> createPlayers() {
-        List<Player> players = new ArrayList<>();
-        PlayerFactory humanPlayerFactory = new HumanPlayerFactory();
-        PlayerFactory computerPlayerFactory = new ComputerPlayerFactory();
-
-        players.add(humanPlayerFactory.createPlayer("Human Player"));
-        players.add(computerPlayerFactory.createPlayer("Computer Player"));
-
-        return players;
-    }
-
-    private static boolean isValidInput(String input, GameRules rules) {
-        List<String> validChoices = rules.getValidMoves();
-        return validChoices.contains(input);
     }
 }

@@ -15,7 +15,7 @@ public class RockPaperScissorsRules implements GameRules {
 
     @Override
     public boolean isWinningMove(String move1, String move2) {
-        return winningMoves.get(move1).equals(move2);
+        return winningMoves.get(move2).equals(move1);
     }
 
     @Override

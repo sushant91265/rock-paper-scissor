@@ -1,0 +1,108 @@
+02:03:54.960 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+02:03:54.987 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+02:03:59.823 [main] INFO  org.game.Main - Round 1:
+02:03:59.825 [main] INFO  org.game.core.GameSession - Human Player, enter your choice: 
+02:04:01.240 [main] INFO  org.game.core.GameSession - Computer Player chose: scissors
+02:04:01.242 [main] INFO  org.game.Main - Human Player vs. Computer Player: Human Player wins against Computer Player!
+02:04:01.243 [main] INFO  org.game.Main - Round 2:
+02:04:01.243 [main] INFO  org.game.core.GameSession - Human Player, enter your choice: 
+02:05:09.635 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+02:05:09.659 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+02:05:11.166 [main] INFO  org.game.Main - Round 1:
+02:05:11.168 [main] INFO  org.game.core.GameSession - Human Player, enter your choice: 
+02:05:12.602 [main] INFO  org.game.core.GameSession - Computer Player chose: rock
+02:05:12.603 [main] INFO  org.game.Main - Human Player vs. Computer Player: It's a tie between Human Player and Computer Player!
+02:05:12.604 [main] INFO  org.game.Main - Round 2:
+02:05:12.604 [main] INFO  org.game.core.GameSession - Human Player, enter your choice: 
+02:05:18.737 [main] INFO  org.game.core.GameSession - Computer Player chose: rock
+02:05:18.738 [main] INFO  org.game.Main - Human Player vs. Computer Player: Human Player wins against Computer Player!
+02:05:32.423 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+02:05:32.447 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+02:05:33.635 [main] INFO  org.game.Main - Round 1:
+02:05:33.637 [main] INFO  org.game.core.GameSession - Human Player, enter your choice: 
+02:05:35.424 [main] INFO  org.game.core.GameSession - Computer Player chose: rock
+02:05:35.427 [main] INFO  org.game.Main - Human Player vs. Computer Player: It's a tie between Human Player and Computer Player!
+02:05:35.427 [main] INFO  org.game.Main - Round 2:
+02:05:35.427 [main] INFO  org.game.core.GameSession - Human Player, enter your choice: 
+02:05:38.320 [main] INFO  org.game.core.GameSession - Computer Player chose: paper
+02:05:38.321 [main] INFO  org.game.Main - Human Player vs. Computer Player: Computer Player wins against Human Player!
+02:05:38.321 [main] INFO  org.game.Main - Round 3:
+02:05:38.321 [main] INFO  org.game.core.GameSession - Human Player, enter your choice: 
+02:05:40.560 [main] INFO  org.game.core.GameSession - Computer Player chose: paper
+02:05:40.560 [main] INFO  org.game.Main - Human Player vs. Computer Player: Computer Player wins against Human Player!
+02:08:40.358 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+02:08:40.388 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+02:08:43.015 [main] INFO  org.game.Main - Round 1:
+02:08:43.017 [main] INFO  org.game.core.GameSession - Human Player, enter your choice: 
+02:08:46.453 [main] INFO  org.game.core.GameSession - Computer Player chose: scissors
+02:08:46.456 [main] INFO  org.game.Main - Human Player vs. Computer Player: Human Player wins against Computer Player!
+02:08:46.456 [main] INFO  org.game.Main - Round 2:
+02:08:46.456 [main] INFO  org.game.core.GameSession - Human Player, enter your choice: 
+02:08:55.127 [main] INFO  org.game.core.GameSession - Computer Player chose: rock
+02:08:55.128 [main] INFO  org.game.Main - Human Player vs. Computer Player: It's a tie between Human Player and Computer Player!
+02:10:11.993 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+02:10:12.014 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+02:10:15.610 [main] INFO  org.game.Main - Round 1:
+02:10:15.613 [main] INFO  org.game.core.GameSession - Human Player, enter your choice: 
+02:10:34.247 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+02:10:34.272 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+02:10:38.138 [main] ERROR org.game.Main - An error occurred while playing the game: 
+java.util.InputMismatchException: null
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at org.game.Main.main(Main.java:30)
+02:11:19.792 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+02:11:19.816 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+02:11:22.024 [main] ERROR org.game.Main - An error occurred while playing the game! Please provide correct input.
+02:15:31.746 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+02:15:31.803 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+02:15:39.628 [main] ERROR org.game.Main - An error occurred while playing the game! Please provide correct input.
+02:15:39.628 [main] DEBUG org.game.Main - Exception: 
+java.util.InputMismatchException: null
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at org.game.Main.main(Main.java:30)
+02:16:48.867 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+02:16:48.895 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+02:16:54.152 [main] ERROR org.game.Main - An error occurred while playing the game! Please provide correct input.
+02:16:54.152 [main] DEBUG org.game.Main - Exception: 
+java.util.InputMismatchException: null
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at org.game.Main.main(Main.java:30)
+02:19:32.736 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+02:19:32.756 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+02:19:35.565 [main] ERROR org.game.Main - An error occurred while playing the game! Please provide correct input.
+02:19:35.565 [main] DEBUG org.game.Main - Exception: 
+java.util.InputMismatchException: null
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at org.game.Main.main(Main.java:30)
+02:20:00.093 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+02:20:00.117 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+02:20:02.276 [main] ERROR org.game.Main - An error occurred while playing the game! Please provide correct input.
+02:20:02.276 [main] DEBUG org.game.Main - Exception: 
+java.util.InputMismatchException: null
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at org.game.Main.main(Main.java:30)
+02:21:59.316 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+02:21:59.348 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+02:22:01.150 [main] INFO  org.game.Main - Round 1:
+02:22:01.154 [main] INFO  org.game.core.GameSession - Human Player, enter your choice: 
+02:22:02.254 [main] INFO  org.game.core.GameSession - Computer Player chose: scissors
+02:22:02.256 [main] INFO  org.game.Main - Human Player vs. Computer Player: Human Player wins against Computer Player!
+02:22:02.257 [main] INFO  org.game.Main - Round 2:
+02:22:02.257 [main] INFO  org.game.core.GameSession - Human Player, enter your choice: 
+02:22:10.196 [main] INFO  org.game.core.GameSession - Computer Player chose: rock
+02:22:10.197 [main] INFO  org.game.Main - Human Player vs. Computer Player: Human Player wins against Computer Player!

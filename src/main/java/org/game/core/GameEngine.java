@@ -25,11 +25,14 @@ public class GameEngine {
                 Player player2 = players.get(j);
 
                 player1.generateMove(rules.getValidMoves());
-                player2.generateMove(rules.getValidMoves());
+
+                if (player2.isComputer()) {
+                    player2.generateMove(rules.getValidMoves());
+                }
 
                 String move1 = player1.getMove();
                 String move2 = player2.getMove();
-
+                System.out.println(player1.getName() + " plays " + move1 + " against " + player2.getName() + " who plays " + move2);
                 String result;
                 if (rules.isWinningMove(move1, move2)) {
                     result = player1.getName() + " wins against " + player2.getName() + "!";

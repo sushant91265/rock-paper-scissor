@@ -1,13 +1,9 @@
 package org.game;
 
 import org.game.core.GameEngine;
-import org.game.model.GameResult;
-import org.game.model.Player;
-import org.game.model.PlayerFactory;
+import org.game.model.*;
 import org.game.rules.GameRules;
 import org.game.util.GameRulesFactory;
-import org.game.model.ComputerPlayerFactory;
-import org.game.model.HumanPlayerFactory;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -19,71 +15,71 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         Properties configProperties = new Properties();
-        try {
-            FileInputStream configFis = new FileInputStream("game_config.properties");
+        try(FileInputStream configFis = new FileInputStream("src/main/resources/game_config.properties")) {
             configProperties.load(configFis);
-            configFis.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error loading config file. Exiting...");
             return;
         }
 
-        // Read the number of players from the config file
-        int numPlayers = Integer.parseInt(configProperties.getProperty("num_players"));
+        int numRounds = Integer.parseInt(configProperties.getProperty("num_rounds"));
 
         GameRules rules = GameRulesFactory.createGameRules(loadGameProperties());
 
-        List<Player> players = createPlayers(numPlayers);
-
+        List<Player> players = createPlayers();
         Scanner scanner = new Scanner(System.in);
+        for (int round = 1; round <= numRounds; round++) {
+            System.out.println("Round " + round + ":");
 
-        while (true) {
-            System.out.print("Enter your choice or type 'exit' to quit: ");
-            String player1Choice = scanner.nextLine().trim().toLowerCase();
+            for (Player player : players) {
+                if (player.isComputer()) {
+                    player.generateMove(rules.getValidMoves());
+                } else {
+                    while (true) {
+                        System.out.print(player.getName() + ", enter your choice: ");
+                        String choice = scanner.nextLine().trim().toLowerCase();
 
-            if (player1Choice.equals("exit")) {
-                break; // Exit the game loop
+                        if (isValidInput(choice, rules)) {
+                            player.setMove(choice);
+                            break;
+                        } else {
+                            System.out.println("Invalid input. Please enter a valid choice.");
+                        }
+                    }
+                }
             }
 
-            // Validate user input based on configuration
-            if (!isValidInput(player1Choice, rules)) {
-                System.out.println("Invalid input. Please enter a valid choice.");
-                continue; // Continue the game loop
-            }
-
-            // Set the human player's move and play the game
-            players.get(0).setMove(player1Choice);
+            // Calculate and display results
             GameEngine game = new GameEngine(rules, players);
             List<GameResult> results = game.play();
 
             results.forEach(System.out::println);
         }
-
         scanner.close();
     }
 
     private static Properties loadGameProperties() {
         Properties properties = new Properties();
-        try (FileInputStream fis = new FileInputStream("game.properties")) {
+        try (FileInputStream fis = new FileInputStream("src/main/resources/game.properties")) {
             properties.load(fis);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error loading game properties. Exiting...");
+            System.exit(1);
         }
         return properties;
     }
 
-    private static List<Player> createPlayers(int numPlayers) {
+    private static List<Player> createPlayers() {
         List<Player> players = new ArrayList<>();
         PlayerFactory humanPlayerFactory = new HumanPlayerFactory();
         PlayerFactory computerPlayerFactory = new ComputerPlayerFactory();
 
-        for (int i = 0; i < numPlayers; i++) {
-            players.add(humanPlayerFactory.createPlayer("Player " + (i + 1)));
-        }
+        players.add(humanPlayerFactory.createPlayer("Human Player"));
+        players.add(computerPlayerFactory.createPlayer("Computer Player"));
+
         return players;
     }
 
-    // Modularized input validation function
     private static boolean isValidInput(String input, GameRules rules) {
         List<String> validChoices = rules.getValidMoves();
         return validChoices.contains(input);

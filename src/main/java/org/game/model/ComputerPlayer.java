@@ -25,6 +25,11 @@ public class ComputerPlayer implements Player {
     }
 
     @Override
+    public boolean isComputer() {
+        return true;
+    }
+
+    @Override
     public void generateMove(List<String> possibleMoves) {
         int randomIndex = (int) (Math.random() * possibleMoves.size());
         setMove(possibleMoves.get(randomIndex));

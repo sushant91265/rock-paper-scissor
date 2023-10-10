@@ -10,4 +10,6 @@ public interface Player {
     void setMove(String move);
 
     void generateMove(List<String> possibleMoves);
+
+    boolean isComputer();
 }

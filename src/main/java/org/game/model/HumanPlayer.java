@@ -30,4 +30,9 @@ public class HumanPlayer implements Player {
     public void generateMove(List<String> possibleMoves) {
         //as a human player, we don't need to generate a move
     }
+
+    @Override
+    public boolean isComputer() {
+        return false;
+    }
 }

@@ -8,11 +8,17 @@ import java.util.Map;
 import java.util.Properties;
 
 public class GameRulesFactory {
-    public static GameRules createGameRules(Properties properties) {
+    private final GameRules gameRules;
+
+    public GameRulesFactory(Properties properties) {
         Map<String, String> winningMoves = new HashMap<>();
         for (String key : properties.stringPropertyNames()) {
             winningMoves.put(key, properties.getProperty(key));
         }
-        return new RockPaperScissorsRules(winningMoves);
+        gameRules = new RockPaperScissorsRules(winningMoves);
+    }
+
+    public GameRules getGameRules() {
+        return gameRules;
     }
 }

@@ -26,7 +26,6 @@ public class GameSession {
                 playHumanMove(player, scanner, rules);
             }
         }
-
         GameEngine game = new GameEngine(rules, players);
         return game.play();
     }

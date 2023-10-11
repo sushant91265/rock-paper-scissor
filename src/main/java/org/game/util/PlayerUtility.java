@@ -13,7 +13,7 @@ public class PlayerUtility {
     private static final String HUMAN_PLAYER = "Human Player";
     private static final String COMPUTER_PLAYER = "Computer Player";
 
-    public static List<Player> createPlayers() {
+    public List<Player> createPlayers() {
         List<Player> players = new ArrayList<>();
         PlayerFactory humanPlayerFactory = new HumanPlayerFactory();
         PlayerFactory computerPlayerFactory = new ComputerPlayerFactory();

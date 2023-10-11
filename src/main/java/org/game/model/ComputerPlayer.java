@@ -6,6 +6,11 @@ public class ComputerPlayer implements Player {
     private final String name;
     private String move;
 
+    public ComputerPlayer(String name, String move) {
+        this.name = name;
+        this.move = move;
+    }
+
     public ComputerPlayer(String name) {
         this.name = name;
     }

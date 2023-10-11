@@ -7,6 +7,12 @@ public class HumanPlayer implements Player {
     private final String name;
     private String move;
 
+    public HumanPlayer(String name, String move) {
+        this.name = name;
+        this.move = move;
+    }
+
+    //TODO: check constructors
     public HumanPlayer(String name) {
         this.name = name;
     }

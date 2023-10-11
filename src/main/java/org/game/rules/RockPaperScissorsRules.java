@@ -30,4 +30,8 @@ public class RockPaperScissorsRules implements GameRules {
     public List<String> getValidMoves() {
         return validMoves;
     }
+
+    public String findWinner(String move1, String move2) {
+        return winningMoves.get(move1).equals(move2) ?  move1 : move2;
+    }
 }

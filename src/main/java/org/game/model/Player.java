@@ -12,4 +12,7 @@ public interface Player {
     void generateMove(List<String> possibleMoves);
 
     boolean isComputer();
+
+    String generateMove();
+
 }

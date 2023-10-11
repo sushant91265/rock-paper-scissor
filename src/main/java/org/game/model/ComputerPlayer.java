@@ -5,9 +5,12 @@ import java.util.List;
 public class ComputerPlayer implements Player {
     private final String name;
     private String move;
+    private MoveGenerator moveGenerator;
 
-    public ComputerPlayer(String name) {
+    public ComputerPlayer(String name, MoveGenerator moveGenerator)
+    {
         this.name = name;
+        this.moveGenerator = moveGenerator;
     }
 
     @Override
@@ -27,6 +30,11 @@ public class ComputerPlayer implements Player {
     @Override
     public boolean isComputer() {
         return true;
+    }
+
+    @Override
+    public String generateMove() {
+        return moveGenerator.generateMove();
     }
 
     @Override

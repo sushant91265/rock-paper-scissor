@@ -1,7 +1,6 @@
 package org.game.model;
 
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;

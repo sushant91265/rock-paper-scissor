@@ -1,18 +1,15 @@
 package org.game.model;
 
-import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.game.Main;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Scanner;
 
-@NoArgsConstructor
+@Slf4j
 public class CmdLineMoveGenerator implements MoveGenerator {
-    private static final Logger log = LoggerFactory.getLogger(CmdLineMoveGenerator.class);
-
-    private List<String> validMoves;
+    private final List<String> validMoves;
+    private static final String EXIT = "exit";
 
     public CmdLineMoveGenerator(List<String> validMoves) {
         this.validMoves = validMoves;
@@ -24,17 +21,17 @@ public class CmdLineMoveGenerator implements MoveGenerator {
         try {
             Scanner scanner = Main.ScannerSingleton.getScanner();
             while(true) {
-                log.info("Enter your move. Valid moves " + validMoves);
+                log.info("Enter your move. Valid moves {}", validMoves);
                 String choice = scanner.nextLine().trim().toLowerCase();
-                if (choice.equals("exit")) {
-                    move = "exit";
+                if (EXIT.equals(choice)) {
+                    move = EXIT;
                     break;
                 }
                 if (validMoves.contains(choice)) {
                     move = choice;
                     break;
                 } else {
-                    log.info("Enter correct choice");
+                    log.info("Re-Enter correct choice.");
                 }
             }
         } catch (Exception e) {

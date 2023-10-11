@@ -4,7 +4,6 @@ import org.game.model.*;
 import org.game.rules.GameRules;
 import org.game.util.ConfigurationReader;
 import org.game.core.GameRulesFactory;
-import org.game.util.GameUtility;
 
 import java.util.*;
 
@@ -20,7 +19,6 @@ public class Main {
         private static Scanner scanner;
 
         private ScannerSingleton() {
-            // Private constructor to prevent external instantiation
         }
 
         public static Scanner getScanner() {
@@ -33,7 +31,7 @@ public class Main {
         public static void closeScanner() {
             if (scanner != null) {
                 scanner.close();
-                scanner = null; // Reset the scanner to allow reinitialization if needed
+                scanner = null;
             }
         }
     }
@@ -64,11 +62,11 @@ public class Main {
 
                 var m1 = p1.generateMove();
                 var m2 = p2.generateMove();
-                System.out.println(m1 + " vs " + m2);
+                log.info(m1 + " vs " + m2);
                 var winnerMove = gameRules.findWinner(m1, m2);
                 var winner = m1.equals(winnerMove) ? p1 : p2;
 
-                System.out.println(winner.getName() + " wins");
+                log.info(winner.getName() + " wins");
                 rounds--;
             }
             log.debug("Game Over");

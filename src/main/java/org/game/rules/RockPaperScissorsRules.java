@@ -20,11 +20,14 @@ public class RockPaperScissorsRules implements GameRules {
 
     @Override
     public List<String> getValidMoves() {
-        return validMoves;
+        return this.validMoves;
     }
 
     @Override
     public String findWinner(String move1, String move2) {
-        return winningMoves.get(move1).equals(move2) ?  move1 : move2;
+        if (move1.equals(move2)) {
+            return "Tie";
+        }
+        return this.winningMoves.get(move1).equals(move2) ?  move1 : move2;
     }
 }

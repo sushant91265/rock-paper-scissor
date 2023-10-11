@@ -1,11 +1,15 @@
 package org.game.model;
 
 import lombok.extern.slf4j.Slf4j;
-import org.game.Main;
+import org.game.util.GameUtility;
+import org.game.util.ScannerSingleton;
 
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * This class implements the MoveGenerator interface and provides the implementation for generating move from command line.
+ */
 @Slf4j
 public class CmdLineMoveGenerator implements MoveGenerator {
     private final List<String> validMoves;
@@ -15,19 +19,23 @@ public class CmdLineMoveGenerator implements MoveGenerator {
         this.validMoves = validMoves;
     }
 
+    /**
+     * This method reads the input from command line and validates it against the valid moves.
+     * @return move
+     */
     @Override
     public String generateMove() {
         String move = "";
         try {
-            Scanner scanner = Main.ScannerSingleton.getScanner();
+            Scanner scanner = ScannerSingleton.getScanner();
             while(true) {
                 log.info("Enter your move. Valid moves {}", validMoves);
                 String choice = scanner.nextLine().trim().toLowerCase();
                 if (EXIT.equals(choice)) {
-                    move = EXIT;
-                    break;
+                    log.info("Exiting the game.");
+                    System.exit(0);
                 }
-                if (validMoves.contains(choice)) {
+                if (GameUtility.isValidInput(choice, validMoves)) {
                     move = choice;
                     break;
                 } else {

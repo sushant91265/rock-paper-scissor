@@ -18,3 +18,6 @@ able to play the game n times before the program exits.
 - Run the Main.java file to start the program. The program will ask for the number of rounds to play. The user
   will then be asked to enter a choice for each round. The computer will randomly generate a choice for each
   round. The winner of each round will be displayed.
+
+# Design
+

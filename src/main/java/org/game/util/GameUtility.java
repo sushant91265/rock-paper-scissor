@@ -1,7 +1,5 @@
 package org.game.util;
 
-import org.game.rules.GameRules;
-
 import java.util.List;
 
 public class GameUtility {
@@ -10,11 +8,13 @@ public class GameUtility {
      * This method checks if the input is valid.
      *
      * @param input The input to be checked.
-     * @param rules The rules of the game.
+     * @param validChoices The list of valid choices.
      * @return true if the input is valid, false otherwise.
      */
-    public static boolean isValidInput(String input, GameRules rules) {
-        List<String> validChoices = rules.getValidMoves();
+    public static boolean isValidInput(String input, List<String> validChoices) {
+        if (input == null || input.isEmpty() || validChoices == null || validChoices.isEmpty()) {
+            return false;
+        }
         return validChoices.contains(input);
     }
 }

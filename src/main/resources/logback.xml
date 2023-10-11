@@ -13,8 +13,6 @@
 
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
-    </root>
-    <logger name="org.game" level="DEBUG">
         <appender-ref ref="FILE"/>
-    </logger>
+    </root>
 </configuration>

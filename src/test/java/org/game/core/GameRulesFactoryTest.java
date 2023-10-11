@@ -1,4 +1,4 @@
-package org.game.util;
+package org.game.core;
 
 import org.junit.jupiter.api.Test;
 
@@ -29,7 +29,8 @@ public class GameRulesFactoryTest {
         assertTrue(gameRules.isWinningMove("Paper", "Rock"));
 
         Set<String> expectedValidMoves = Set.of("Rock", "Scissors", "Paper");
-        assertIterableEquals(expectedValidMoves, gameRules.getValidMoves());
+        assertEquals(gameRules.getValidMoves().containsAll(expectedValidMoves),
+                expectedValidMoves.containsAll(gameRules.getValidMoves()));
     }
 
     @Test

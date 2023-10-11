@@ -17,28 +17,59 @@ import java.util.Scanner;
 public class GameSession {
 
     private static final Logger log = LoggerFactory.getLogger(GameSession.class);
+    private static final String EXIT_COMMAND = "exit";
 
-    public List<GameResult> playRound(final GameRules rules, final List<Player> players, final Scanner scanner) {
-        for (Player player : players) {
-            if (player.isComputer()) {
-                playComputerMove(player, rules);
-            } else {
-                playHumanMove(player, scanner, rules);
-            }
-        }
-        GameEngine game = new GameEngine(rules, players);
-        return game.play();
+    private final GameRules rules;
+    private final List<Player> players;
+
+    public GameSession(GameRules rules, List<Player> players) {
+        this.rules = rules;
+        this.players = players;
     }
 
-    private void playComputerMove(Player player, GameRules rules) {
+    public void play(Scanner scanner) {
+        log.info("Enter the number of rounds to play: ");
+        int numRounds = scanner.nextInt();
+        scanner.nextLine();
+
+        for (int round = 1; round <= numRounds; round++) {
+            playRound(round, scanner);
+        }
+    }
+
+    private void playRound(int round, Scanner scanner) {
+        log.info("Round {}:", round);
+
+        for (Player player : players) {
+            if (player.isComputer()) {
+                playComputerMove(player);
+            } else {
+                if (!playHumanMove(player, scanner)) {
+                    return;
+                }
+            }
+        }
+
+        GameEngine gameEngine = new GameEngine(rules, players);
+        List<GameResult> results = gameEngine.play();
+
+        results.forEach(result -> log.info(result.toString()));
+    }
+
+    private void playComputerMove(Player player) {
         player.generateMove(rules.getValidMoves());
         log.info("{} chose: {}", player.getName(), player.getMove());
     }
 
-    private void playHumanMove(Player player, Scanner scanner, GameRules rules) {
+    private boolean playHumanMove(Player player, Scanner scanner) {
         while (true) {
-            log.info("{}, enter your choice: ",player.getName());
+            log.info("{}, enter your choice (type 'exit' to end the game): ", player.getName());
             String choice = scanner.nextLine().trim().toLowerCase();
+
+            if (choice.equals(EXIT_COMMAND)) {
+                log.info("Exiting the game.");
+                return false;
+            }
 
             if (GameUtility.isValidInput(choice, rules)) {
                 player.setMove(choice);
@@ -47,5 +78,6 @@ public class GameSession {
                 log.info("Invalid input. Please enter a valid choice.");
             }
         }
+        return true;
     }
 }

@@ -1,4 +1,4 @@
-package org.game.util;
+package org.game.core;
 
 import org.game.rules.GameRules;
 import org.game.rules.RockPaperScissorsRules;

@@ -23,8 +23,8 @@ public class GameEngineTest {
     public void setUp() {
         gameRules = mock(GameRules.class);
         players = new ArrayList<>();
-        Player player1 = new HumanPlayer("Player1", "Rock");
-        Player player2 = new ComputerPlayer("Player2", "Scissors");
+        Player player1 = new HumanPlayer("Player1");
+        Player player2 = new ComputerPlayer("Player2");
         players.add(player1);
         players.add(player2);
         gameEngine = new GameEngine(gameRules, players);
@@ -32,6 +32,8 @@ public class GameEngineTest {
 
     @Test
     public void testPlayRound_Player1Wins() {
+        players.get(0).setMove("Rock");
+        players.get(1).setMove("Scissors");
         when(gameRules.isWinningMove("Rock", "Scissors")).thenReturn(true);
         when(gameRules.isWinningMove("Scissors", "Rock")).thenReturn(false);
 
@@ -44,6 +46,8 @@ public class GameEngineTest {
 
     @Test
     public void testPlayRound_Player2Wins() {
+        players.get(0).setMove("Rock");
+        players.get(1).setMove("Scissors");
         when(gameRules.isWinningMove("Rock", "Scissors")).thenReturn(false);
         when(gameRules.isWinningMove("Scissors", "Rock")).thenReturn(true);
 

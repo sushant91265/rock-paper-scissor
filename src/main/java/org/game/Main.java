@@ -1,11 +1,10 @@
 package org.game;
 
-import org.game.core.GameSession;
 import org.game.model.*;
 import org.game.rules.GameRules;
 import org.game.util.ConfigurationReader;
 import org.game.core.GameRulesFactory;
-import org.game.util.PlayerUtility;
+import org.game.util.GameUtility;
 
 import java.util.*;
 
@@ -15,9 +14,33 @@ import org.slf4j.LoggerFactory;
 public class Main {
 
     private static final Logger log = LoggerFactory.getLogger(Main.class);
+    private static int numRounds;
+
+    public static class ScannerSingleton {
+        private static Scanner scanner;
+
+        private ScannerSingleton() {
+            // Private constructor to prevent external instantiation
+        }
+
+        public static Scanner getScanner() {
+            if (scanner == null) {
+                scanner = new Scanner(System.in);
+            }
+            return scanner;
+        }
+
+        public static void closeScanner() {
+            if (scanner != null) {
+                scanner.close();
+                scanner = null; // Reset the scanner to allow reinitialization if needed
+            }
+        }
+    }
 
     public static class Game {
         private final Integer totalPlayers;
+
         private final GameRules gameRules;
         private final Integer numberOfRounds;
 
@@ -35,7 +58,7 @@ public class Main {
 
         public void startGame() {
             int rounds = this.numberOfRounds;
-            while(rounds > 0){
+            while(rounds > 0) {
                 var p1 = players.get(0);
                 var p2 = players.get(1);
 
@@ -48,92 +71,39 @@ public class Main {
                 System.out.println(winner.getName() + " wins");
                 rounds--;
             }
-        }
-
-        public String generateMove() {
-            String move = "";
-            try(var scanner = new Scanner(System.in)){
-                while(true) {
-                    //System.out.println("Enter your move. Valid moves " + gameRules.getValidMoves());
-                    String choice = scanner.nextLine().trim().toLowerCase();
-                    if (choice.equals("exit")) {
-                        move = "exit";
-                        break;
-                    }
-                    if (gameRules.getValidMoves().contains(choice)) {
-                        move = choice;
-                        break;
-                    } else {
-                        System.out.println("Enter correct choice");
-                    }
-                }
-            }
-            return move;
+            log.debug("Game Over");
+            Main.ScannerSingleton.closeScanner();
         }
     }
-
-    public static void readLinesFromCommandLine(int rounds) {
-        String move = "";
-        try (Scanner scanner = new Scanner(System.in)) {
-            for (int round = 1; round <= rounds; round++) {
-                System.out.println("Round " + round + ":");
-                while (true) {
-                    String line = scanner.nextLine();
-                    if (line.equalsIgnoreCase("rock")) {
-                        move = line;
-                        break;
-                    }
-                    System.out.println("You entered: " + line);
-                }
-            }
-        }
-    }
-
-
-
 
     public static void main(String[] args) {
         log.info("Welcome to Rock-Paper-Scissors!");
         ConfigurationReader configurationReader = new ConfigurationReader();
         Properties properties = configurationReader.loadGameProperties();
         GameRules rules = createGameRules(properties);
-        List<Player> players = createPlayers();
 
-        Game game = null;
-//        try (Scanner scanner = new Scanner(System.in)) {
-//            String rounds = scanner.nextLine().trim().toLowerCase();
-//            game = new Game(2, rules, Integer.parseInt(rounds));
-//            game.addPlayer(HumanPlayerFactory.createPlayer("human", rules.getValidMoves()));
-//            game.addPlayer(ComputerPlayerFactory.createPlayer("computer", rules.getValidMoves()));
-//            readLinesFromCommandLine(scanner);
-////            game.startGame();
-//        } catch (InputMismatchException e) {
-//            log.error("An error occurred while playing the game! Please provide correct input.");
-//            log.debug("Exception: ", e);
-//        }
+        try {
+            Scanner scanner = ScannerSingleton.getScanner();
+            log.info("Enter the number of rounds to play: ");
+            numRounds = scanner.nextInt();
+            scanner.nextLine();
 
-        try (Scanner scanner = new Scanner(System.in)) {
-            int rounds = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline character
+            Game game = new Game(2, rules, numRounds);
+            HumanPlayerFactory humanPlayerFactory = new HumanPlayerFactory();
+            ComputerPlayerFactory computerPlayerFactory = new ComputerPlayerFactory();
+            game.addPlayer(humanPlayerFactory.createPlayer("Human",rules.getValidMoves()));
+            game.addPlayer(computerPlayerFactory.createPlayer("Computer",rules.getValidMoves()));
+            game.startGame();
 
-            System.out.println("Enter lines of text (type 'exit' to quit):");
-            readLinesFromCommandLine(rounds);
+        } catch (Exception e) {
+            log.error("Invalid input. Please enter a number");
+            System.exit(1);
         }
     }
 
     private static GameRules createGameRules(Properties properties) {
         GameRulesFactory gameRulesFactory = new GameRulesFactory(properties);
         return gameRulesFactory.getGameRules();
-    }
-
-    private static List<Player> createPlayers() {
-        PlayerUtility playerUtility = new PlayerUtility();
-        return playerUtility.createPlayers();
-    }
-
-    private static void playGame(GameRules rules, List<Player> players, Scanner scanner) {
-        GameSession gameSession = new GameSession(rules, players);
-        gameSession.play(scanner);
     }
 }
 

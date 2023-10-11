@@ -39,3 +39,123 @@
 18:44:47.605 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
 18:45:06.682 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
 18:45:36.225 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+19:49:58.092 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+19:57:57.032 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+20:10:08.492 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+20:26:00.159 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+20:26:00.187 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+20:26:51.400 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+20:26:51.432 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+20:31:07.980 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+20:31:07.996 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+20:31:09.690 [main] INFO  org.game.model.CmdLineMoveGenerator - Enter your move. Valid moves [scissors, rock, paper]
+20:31:35.079 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+20:31:35.102 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+20:32:13.100 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+20:32:13.121 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+20:32:35.422 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+20:32:35.442 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+20:32:39.515 [main] INFO  org.game.Main - ok
+20:34:36.860 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+20:34:36.878 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+20:34:46.564 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+20:34:46.585 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+20:34:49.670 [main] INFO  org.game.model.CmdLineMoveGenerator - Enter your move. Valid moves [scissors, rock, paper]
+20:36:24.582 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+20:36:24.601 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+20:36:26.213 [main] INFO  org.game.model.CmdLineMoveGenerator - Enter your move. Valid moves [scissors, rock, paper]
+20:38:33.070 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+20:38:33.093 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+20:38:34.706 [main] INFO  org.game.model.CmdLineMoveGenerator - Enter your move. Valid moves [scissors, rock, paper]
+20:41:04.374 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+20:41:04.393 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+20:45:22.228 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+20:45:22.250 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+20:45:24.123 [main] INFO  org.game.model.CmdLineMoveGenerator - Inside generateMove
+20:45:56.683 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+20:45:56.702 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+20:45:57.635 [main] INFO  org.game.model.CmdLineMoveGenerator - Inside generateMove
+20:48:24.766 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+20:48:24.785 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+20:51:22.831 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+20:51:22.849 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+20:51:24.942 [main] INFO  org.game.model.CmdLineMoveGenerator - Enter your move. Valid moves [scissors, rock, paper]
+20:52:09.220 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+20:52:09.236 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+20:52:10.797 [main] INFO  org.game.model.CmdLineMoveGenerator - Enter your move. Valid moves [scissors, rock, paper]
+20:52:10.799 [Thread-0] ERROR org.game.model.CmdLineMoveGenerator - Error reading move
+java.lang.NullPointerException: Cannot invoke "java.io.Console.readLine()" because the return value of "java.lang.System.console()" is null
+	at org.game.model.CmdLineMoveGenerator.lambda$generateMove$0(CmdLineMoveGenerator.java:28)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+20:53:38.463 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+20:53:38.481 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+20:53:40.021 [main] INFO  org.game.model.CmdLineMoveGenerator - Enter your move. Valid moves [scissors, rock, paper]
+20:54:55.958 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+20:54:55.981 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+20:54:57.114 [main] INFO  org.game.model.CmdLineMoveGenerator - Enter your move. Valid moves [scissors, rock, paper]
+20:54:57.114 [main] INFO  org.game.model.CmdLineMoveGenerator - No input available. Exiting the game.
+21:00:02.742 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+21:00:02.766 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+21:00:04.519 [main] INFO  org.game.model.CmdLineMoveGenerator - Enter your move. Valid moves [scissors, rock, paper]
+21:00:04.519 [main] INFO  org.game.model.CmdLineMoveGenerator - No input available. Exiting the game.
+21:00:39.203 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+21:00:39.244 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+21:00:40.957 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+21:00:40.959 [main] ERROR org.game.Main - Invalid input. Please enter a number
+21:01:03.229 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+21:01:03.252 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+21:01:05.598 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+21:01:05.599 [main] ERROR org.game.Main - Invalid input. Please enter a number
+java.util.NoSuchElementException: null
+	at java.base/java.util.Scanner.throwFor(Scanner.java:937)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at org.game.Main.main(Main.java:71)
+21:10:58.052 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+21:10:58.089 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+21:10:59.482 [main] INFO  org.game.model.CmdLineMoveGenerator - Enter your move. Valid moves [scissors, rock, paper]
+21:11:01.843 [main] INFO  org.game.model.CmdLineMoveGenerator - Enter your move. Valid moves [scissors, rock, paper]
+21:11:01.844 [main] INFO  org.game.model.CmdLineMoveGenerator - No input available. Exiting the game.
+21:11:01.844 [main] ERROR org.game.Main - Invalid input. Please enter a number
+21:13:12.745 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+21:13:12.769 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+21:13:15.841 [main] ERROR org.game.model.CmdLineMoveGenerator - Error while reading input from command line
+java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1651)
+	at org.game.model.CmdLineMoveGenerator.generateMove(CmdLineMoveGenerator.java:29)
+	at org.game.model.HumanPlayer.generateMove(HumanPlayer.java:44)
+	at org.game.Main$Game.startGame(Main.java:65)
+	at org.game.Main.main(Main.java:94)
+21:13:15.844 [main] ERROR org.game.Main - Invalid input. Please enter a number
+21:14:30.422 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+21:14:30.440 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+21:14:35.142 [main] DEBUG org.game.model.CmdLineMoveGenerator - Closing scanner
+21:14:35.145 [main] ERROR org.game.model.CmdLineMoveGenerator - Error while reading input from command line
+java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1651)
+	at org.game.model.CmdLineMoveGenerator.generateMove(CmdLineMoveGenerator.java:29)
+	at org.game.model.HumanPlayer.generateMove(HumanPlayer.java:44)
+	at org.game.Main$Game.startGame(Main.java:65)
+	at org.game.Main.main(Main.java:94)
+21:14:35.147 [main] DEBUG org.game.model.CmdLineMoveGenerator - Closing scanner
+21:14:35.147 [main] ERROR org.game.Main - Invalid input. Please enter a number
+21:15:33.261 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+21:15:33.277 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+21:15:35.925 [main] DEBUG org.game.model.CmdLineMoveGenerator - Closing scanner
+21:15:35.927 [main] ERROR org.game.model.CmdLineMoveGenerator - Error while reading input from command line
+java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1651)
+	at org.game.model.CmdLineMoveGenerator.generateMove(CmdLineMoveGenerator.java:29)
+	at org.game.model.HumanPlayer.generateMove(HumanPlayer.java:44)
+	at org.game.Main$Game.startGame(Main.java:65)
+	at org.game.Main.main(Main.java:94)
+21:15:35.929 [main] DEBUG org.game.model.CmdLineMoveGenerator - Closing scanner
+21:15:35.930 [main] ERROR org.game.Main - Invalid input. Please enter a number
+21:16:46.631 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+21:16:46.650 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+21:19:10.681 [main] INFO  org.game.Main - Welcome to Rock-Paper-Scissors!
+21:19:10.700 [main] INFO  org.game.Main - Enter the number of rounds to play: 
+21:19:12.021 [main] INFO  org.game.model.CmdLineMoveGenerator - Enter your move. Valid moves [scissors, rock, paper]
+21:19:13.868 [main] INFO  org.game.model.CmdLineMoveGenerator - Enter your move. Valid moves [scissors, rock, paper]
+21:19:16.811 [main] DEBUG org.game.Main - Game Over

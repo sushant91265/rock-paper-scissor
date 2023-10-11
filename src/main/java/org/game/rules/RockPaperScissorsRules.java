@@ -19,18 +19,11 @@ public class RockPaperScissorsRules implements GameRules {
     }
 
     @Override
-    public boolean isWinningMove(String move1, String move2) {
-        if (!validMoves.contains(move1) || !validMoves.contains(move2)) {
-            throw new IllegalArgumentException("Invalid moves provided!");
-        }
-        return winningMoves.get(move1).equals(move2);
-    }
-
-    @Override
     public List<String> getValidMoves() {
         return validMoves;
     }
 
+    @Override
     public String findWinner(String move1, String move2) {
         return winningMoves.get(move1).equals(move2) ?  move1 : move2;
     }

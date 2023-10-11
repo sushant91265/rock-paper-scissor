@@ -8,7 +8,8 @@ public class ComputerPlayerFactory implements PlayerFactory {
         return new ComputerPlayer(name, new RandomMoveGenerator());
     }
 
-    public static Player createPlayer(String name, List<String> possibleMoves){
+    @Override
+    public Player createPlayer(String name, List<String> possibleMoves){
         return new HumanPlayer(name, new RandomMoveGenerator(possibleMoves));
     }
 }

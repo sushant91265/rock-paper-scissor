@@ -10,7 +10,6 @@ import org.mockito.MockedStatic;
 import org.mockito.MockitoAnnotations;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -64,18 +63,6 @@ public class CmdLineMoveGeneratorTest {
             String result = moveGenerator.generateMove();
 
             assertEquals("rock", result);
-        }
-    }
-
-    @Test
-    void testGenerateMove_ExceptionWhileReadingInput() {
-        try (MockedStatic<ScannerSingleton> mockedScannerSingleton = mockStatic(ScannerSingleton.class)) {
-            mockedScannerSingleton.when(ScannerSingleton::getScanner).thenReturn(scanner);
-            when(scanner.nextLine()).thenThrow(new NoSuchElementException("Mocked exception"));
-            String result = moveGenerator.generateMove();
-
-            assertEquals("", result);
-            verify(scanner, atLeastOnce()).nextLine();
         }
     }
 }

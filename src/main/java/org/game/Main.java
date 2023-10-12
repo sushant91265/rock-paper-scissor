@@ -31,7 +31,16 @@ public class Main {
 
     static int readNumRounds(Scanner scanner) {
         log.info("Enter the number of rounds to play: ");
-        int numRounds = scanner.nextInt();
+        try {
+            int numRounds = scanner.nextInt();
+            return validateNumRounds(numRounds, scanner);
+        } catch (InputMismatchException e) {
+            log.error("Invalid input. Number of rounds should be an number.");
+            throw new InputMismatchException("Invalid input. Number of rounds should be an number.");
+        }
+    }
+
+    private static int validateNumRounds(int numRounds, Scanner scanner) {
         if (numRounds <= 0) {
             log.error("Number of rounds should be greater than 0");
             throw new InputMismatchException("Number of rounds should be greater than 0");

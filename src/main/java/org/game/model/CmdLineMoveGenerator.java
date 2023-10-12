@@ -26,24 +26,20 @@ public class CmdLineMoveGenerator implements MoveGenerator {
     @Override
     public String generateMove() {
         String move = "";
-        try {
-            Scanner scanner = ScannerSingleton.getScanner();
-            while(true) {
-                log.info("Enter your move. Valid moves are: {} or type 'exit' to quit the game", validMoves);
-                String choice = scanner.nextLine().trim().toLowerCase();
-                if (EXIT.equals(choice)) {
-                    log.info("Exiting the game.");
-                    System.exit(0);
-                }
-                if (GameUtility.isValidInput(choice, validMoves)) {
-                    move = choice;
-                    break;
-                } else {
-                    log.info("Re-Enter correct choice.");
-                }
+        Scanner scanner = ScannerSingleton.getScanner();
+        while(true) {
+            log.info("Enter your move. Valid moves are: {} or type 'exit' to quit the game", validMoves);
+            String choice = scanner.nextLine().trim().toLowerCase();
+            if (EXIT.equals(choice)) {
+                log.info("Exiting the game.");
+                System.exit(0);
             }
-        } catch (Exception e) {
-            log.error("Error while reading input from command line", e);
+            if (GameUtility.isValidInput(choice, validMoves)) {
+                move = choice;
+                break;
+            } else {
+                log.info("Re-Enter correct choice.");
+            }
         }
         return move;
     }

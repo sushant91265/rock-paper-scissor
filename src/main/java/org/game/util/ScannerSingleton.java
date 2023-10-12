@@ -6,7 +6,7 @@ import java.util.Scanner;
  * This class provides a singleton instance of Scanner.
  */
 public class ScannerSingleton {
-    private static Scanner scanner;
+    private static Scanner scanner = null;
 
     private ScannerSingleton() {
     }
@@ -15,6 +15,7 @@ public class ScannerSingleton {
         if (scanner == null) {
             scanner = new Scanner(System.in);
         }
+
         return scanner;
     }
 

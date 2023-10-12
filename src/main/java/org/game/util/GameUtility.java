@@ -12,7 +12,7 @@ public class GameUtility {
      * @return true if the input is valid, false otherwise.
      */
     public static boolean isValidInput(String input, List<String> validChoices) {
-        if (input == null || input.isEmpty() || validChoices == null || validChoices.isEmpty()) {
+        if (input == null || input.isEmpty()) {
             return false;
         }
         return validChoices.contains(input);

@@ -7,7 +7,6 @@ import org.game.model.Player;
 import org.game.model.PlayerFactory;
 import org.game.rules.GameRules;
 import org.game.util.ConfigurationReader;
-import org.game.util.ScannerSingleton;
 
 import java.util.*;
 
@@ -16,13 +15,13 @@ import java.util.*;
  */
 @Slf4j
 public class GameSession {
-    public Game initializeGame() {
-        ConfigurationReader configurationReader = new ConfigurationReader();
-        Properties properties = configurationReader.loadGameProperties();
-        GameRules rules = createGameRules(properties);
 
-        Scanner scanner = ScannerSingleton.getScanner();
-        int numRounds = readNumRounds(scanner);
+    private final String GAME_PROPERTIES_FILE = "src/main/resources/game.properties";
+
+    public Game initializeGame(int numRounds) {
+        ConfigurationReader configurationReader = new ConfigurationReader();
+        Properties properties = configurationReader.loadGameProperties(GAME_PROPERTIES_FILE);
+        GameRules rules = createGameRules(properties);
 
         List<Player> players = createPlayers(rules);
 
@@ -32,18 +31,6 @@ public class GameSession {
     private GameRules createGameRules(Properties properties) {
         GameRulesFactory gameRulesFactory = new GameRulesFactory(properties);
         return gameRulesFactory.getGameRules();
-    }
-
-    private int readNumRounds(Scanner scanner) {
-        try {
-            log.info("Enter the number of rounds to play: ");
-            int numRounds = scanner.nextInt();
-            scanner.nextLine();
-            return numRounds;
-        } catch (InputMismatchException e) {
-            log.error("Error while reading number of rounds", e);
-            throw e;
-        }
     }
 
     private List<Player> createPlayers(GameRules rules) {

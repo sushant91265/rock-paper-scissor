@@ -22,7 +22,7 @@ public class RockPaperScissorsRulesTest {
 
     @Test
     void testFindWinner_Player1Wins() {
-        RockPaperScissorsRules rules = new RockPaperScissorsRules(winningMoves);
+        GameRules rules = new RockPaperScissorsRules(winningMoves);
 
         when(winningMoves.get("rock")).thenReturn("scissors");
         when(winningMoves.get("scissors")).thenReturn("paper");

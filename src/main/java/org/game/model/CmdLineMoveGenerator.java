@@ -29,7 +29,7 @@ public class CmdLineMoveGenerator implements MoveGenerator {
         try {
             Scanner scanner = ScannerSingleton.getScanner();
             while(true) {
-                log.info("Enter your move. Valid moves {}", validMoves);
+                log.info("Enter your move. Valid moves are: {} or type 'exit' to quit the game", validMoves);
                 String choice = scanner.nextLine().trim().toLowerCase();
                 if (EXIT.equals(choice)) {
                     log.info("Exiting the game.");

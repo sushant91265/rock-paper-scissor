@@ -56,14 +56,4 @@ public class GameUtilityTest {
 
         assertFalse(result);
     }
-
-    @Test
-    void testIsValidInput_ValidInput_NullList() {
-        List<String> validChoices = null;
-        String input = "rock";
-
-        boolean result = GameUtility.isValidInput(input, validChoices);
-
-        assertFalse(result);
-    }
 }

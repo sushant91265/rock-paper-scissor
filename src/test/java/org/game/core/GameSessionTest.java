@@ -1,49 +1,37 @@
-//package org.game.core;
-//
-//import org.game.rules.GameRules;
-//import org.game.util.ConfigurationReader;
-//import org.junit.jupiter.api.BeforeEach;
-//import org.junit.jupiter.api.Test;
-//import org.mockito.Mock;
-//import org.mockito.MockitoAnnotations;
-//import static org.mockito.Mockito.when;
-//
-//import java.util.Properties;
-//import java.util.Scanner;
-//import static org.junit.jupiter.api.Assertions.assertEquals;
-//
-//public class GameSessionTest {
-//
-//    @Mock
-//    private ConfigurationReader configurationReader;
-//
-//    @Mock
-//    private GameRulesFactory gameRulesFactory;
-//
-//    @Mock
-//    private Properties properties;
-//
-//    @Mock
-//    private GameRules gameRules;
-//
-//    @Mock
-//    private Scanner scanner;
-//
-//    @BeforeEach
-//    void setup() {
-//        MockitoAnnotations.initMocks(this);
-//    }
-//
-//    @Test
-//    void testInitializeGame() {
-//        GameSession gameSession = new GameSession();
-//
-//        when(configurationReader.loadGameProperties()).thenReturn(properties);
-//        when(scanner.nextInt()).thenReturn(5);
-//
-//        Game game = gameSession.initializeGame();
-//
-//        assertEquals(game.getGameRules(), gameRules);
-//        assertEquals(game.getNumberOfRounds(), 5);
-//    }
-//}
+package org.game.core;
+
+import org.game.util.ConfigurationReader;
+import org.game.util.ScannerSingleton;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockedStatic;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+import java.util.Properties;
+import java.util.Scanner;
+
+public class GameSessionTest {
+
+    @Test
+    void testInitializeGame() {
+        GameSession gameSession = new GameSession();
+        ConfigurationReader configurationReader = mock(ConfigurationReader.class);
+        Properties properties = new Properties();
+        properties.setProperty("rock", "paper");
+
+        when(configurationReader.loadGameProperties("filepath")).thenReturn(properties);
+
+        Scanner scanner = mock(Scanner.class);
+        try (MockedStatic<ScannerSingleton> mockedScannerSingleton = mockStatic(ScannerSingleton.class)) {
+            mockedScannerSingleton.when(ScannerSingleton::getScanner).thenReturn(scanner);
+            when(scanner.nextInt()).thenReturn(5);
+            Game game = gameSession.initializeGame(5);
+
+            assertTrue(game.getGameRules().getValidMoves().contains("rock"));
+            assertEquals(game.getNumberOfRounds(), 5);
+        }
+    }
+}

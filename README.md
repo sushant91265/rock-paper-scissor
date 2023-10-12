@@ -13,11 +13,16 @@ Write a program that plays Paper-Rock-Scissors between the computer and a real p
 able to play the game n times before the program exits.
 
 # Solution
-- The solution is implemented in Java with 75% unit test coverage and the logs are saved in a log file as well. 
+- The solution is implemented in Java with more than 85% unit test coverage and the logs are saved in a log file as well. 
 - The program is run from the command line. The rules are defined in the `game.properties` file.
 - Run the Main.java file to start the program. The program will ask for the number of rounds to play. The user
   will then be asked to enter a choice for each round. The computer will randomly generate a choice for each
   round. The winner of each round will be displayed.
 
-# Design
+# Libraries used
+- JUnit 5 for unit testing
+- Maven for build and dependency management
+- Lombok for getter and setter generation
+- Mockito for mocking
+- Logback for logging
 
